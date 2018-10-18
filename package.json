@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@sendgrid/mail": "6.2.1",
-    "@steemit/steem-js": "0.7.1",
+    "@bearshares/bears-js": "0.7.1",
     "body-parser": "1.18.2",
     "bunyan": "1.8.12",
     "express": "4.16.2",

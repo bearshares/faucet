@@ -6,7 +6,7 @@
  */
 
 const fetch = require('isomorphic-fetch');
-const steem = require('@steemit/steem-js');
+const bears = require('@bearshares/bears-js');
 const geoip = require('../helpers/maxmind');
 const jwt = require('jsonwebtoken');
 const { checkpoints } = require('../constants');
@@ -37,9 +37,9 @@ const conveyorAccount = getEnv('CONVEYOR_USERNAME');
 const conveyorKey = getEnv('CONVEYOR_POSTING_WIF');
 const recaptchaSecret = getEnv('RECAPTCHA_SECRET');
 
-const rpcNode = getEnv('STEEMJS_URL');
+const rpcNode = getEnv('BEARSJS_URL');
 if (rpcNode) {
-    steem.api.setOptions({ url: rpcNode });
+    bears.api.setOptions({ url: rpcNode });
 }
 
 /**
@@ -114,7 +114,7 @@ async function conveyorCall(method, params) {
         logger.warn({ callParams: params }, 'Conveyor call %s', method);
         switch (method) {
             case 'is_email_registered':
-                return (params.email || params[0]) === 'taken@steemit.com';
+                return (params.email || params[0]) === 'taken@bearshares.com';
             case 'is_phone_registered':
                 return (params.phone || params[0]) === '+12345678900';
             case 'set_user_data':
@@ -123,7 +123,7 @@ async function conveyorCall(method, params) {
                 throw new Error(`No mock implementation for ${method}`);
         }
     } else {
-        return steem.api.signedCallAsync(
+        return bears.api.signedCallAsync(
             `conveyor.${method}`,
             params,
             conveyorAccount,
@@ -151,14 +151,14 @@ async function verifyCaptcha(recaptcha, ip) {
 }
 
 /**
- * Create new steem account.
+ * Create new bears account.
  * @param payload Account create with delegation operation.
  */
 async function createAccount(payload) {
     if (DEBUG_MODE) {
         logger.warn({ accountPayload: payload }, 'Creating new account');
     } else {
-        return steem.api.signedCallAsync(
+        return bears.api.signedCallAsync(
             `kingdom.create_account`,
             payload,
             conveyorAccount,
@@ -177,7 +177,7 @@ async function checkUsername(username) {
         return username === 'taken';
     }
     // TODO: this could use lookup_accounts which is less heavy on our rpc nodes
-    const [account] = await steem.api.getAccountsAsync([username]);
+    const [account] = await bears.api.getAccountsAsync([username]);
     return !!account;
 }
 
@@ -216,7 +216,7 @@ function extractMetadataFromUser(user) {
 async function gatekeeperCheck(user) {
     const metadata = extractMetadataFromUser(user);
 
-    return steem.api.signedCallAsync(
+    return bears.api.signedCallAsync(
         'gatekeeper.check',
         { metadata },
         conveyorAccount,
@@ -230,7 +230,7 @@ async function gatekeeperCheck(user) {
  * @param {object} user sequelize model instance
  */
 async function gatekeeperSignupGet(gatekeeperSignupId) {
-    return steem.api.signedCallAsync(
+    return bears.api.signedCallAsync(
         'gatekeeper.signup_get',
         { id: gatekeeperSignupId },
         conveyorAccount,
@@ -244,7 +244,7 @@ async function gatekeeperSignupGet(gatekeeperSignupId) {
  * @param {object} user sequelize model instance
  */
 async function gatekeeperSignupCreate(user) {
-    return steem.api.signedCallAsync(
+    return bears.api.signedCallAsync(
         'gatekeeper.signup_create',
         {
             ip: user.ip,
@@ -259,7 +259,7 @@ async function gatekeeperSignupCreate(user) {
 }
 
 async function gatekeeperMarkSignupApproved(user, adminUsername) {
-    return steem.api.signedCallAsync(
+    return bears.api.signedCallAsync(
         'gatekeeper.signup_mark_approved',
         {
             id: user.gatekeeper_id,
@@ -271,7 +271,7 @@ async function gatekeeperMarkSignupApproved(user, adminUsername) {
 }
 
 async function gatekeeperMarkSignupRejected(user, adminUsername) {
-    return steem.api.signedCallAsync(
+    return bears.api.signedCallAsync(
         'gatekeeper.signup_mark_rejected',
         {
             id: user.gatekeeper_id,
@@ -283,7 +283,7 @@ async function gatekeeperMarkSignupRejected(user, adminUsername) {
 }
 
 async function gatekeeperMarkSignupCreated(user) {
-    return steem.api.signedCallAsync(
+    return bears.api.signedCallAsync(
         'gatekeeper.signup_mark_created',
         { id: user.gatekeeper_id },
         conveyorAccount,

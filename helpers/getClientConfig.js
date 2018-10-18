@@ -7,7 +7,7 @@
 function getClientConfig() {
     const envVars = [
         'RECAPTCHA_SITE_KEY',
-        'STEEMJS_URL',
+        'BEARSJS_URL',
         'DEFAULT_REDIRECT_URI',
         'SIFTSCIENCE_JS_SNIPPET_KEY',
         'REACT_DISABLE_ACCOUNT_CREATION',

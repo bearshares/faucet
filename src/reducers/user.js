@@ -28,7 +28,7 @@ const defaultState = Map({
     referrer:
         referrerMatch && referrerMatch.length === 2
             ? referrerMatch[1]
-            : 'steemit',
+            : 'bearshares',
     token: '',
     completed: false,
     step: 'signupOptions',

@@ -2,8 +2,8 @@ const CHECKPOINTS = {
     signup_start: 'signup_start',
     paid_signup_options_modal_shown: 'paid_signup_options_modal_shown',
     paid_signup_clicked_blocktrades: 'paid_signup_clicked_blocktrades',
-    paid_signup_clicked_anonsteem: 'paid_signup_clicked_anonsteem',
-    paid_signup_clicked_steemconnect: 'paid_signup_clicked_steemconnect',
+    paid_signup_clicked_anonbears: 'paid_signup_clicked_anonbears',
+    paid_signup_clicked_bearsconnect: 'paid_signup_clicked_bearsconnect',
     free_signup_chosen: 'free_signup_chosen',
     username_chosen: 'username_chosen',
     email_submitted: 'email_submitted',
@@ -29,12 +29,12 @@ const checkpoints = [
         symbol: CHECKPOINTS.paid_signup_clicked_blocktrades,
     },
     {
-        human: 'Clicked anonsteem',
-        symbol: CHECKPOINTS.paid_signup_clicked_anonsteem,
+        human: 'Clicked anonbears',
+        symbol: CHECKPOINTS.paid_signup_clicked_anonbears,
     },
     {
-        human: 'Clicked steemconnect',
-        symbol: CHECKPOINTS.paid_signup_clicked_steemconnect,
+        human: 'Clicked bearsconnect',
+        symbol: CHECKPOINTS.paid_signup_clicked_bearsconnect,
     },
     {
         human: 'Pressed "Sign up for free"',

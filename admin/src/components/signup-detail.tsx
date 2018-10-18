@@ -326,9 +326,9 @@ class SignupDetail extends React.Component<
               <small>
                 <a
                   target="_blank"
-                  href={`https://steemd.com/@${signup.username}`}
+                  href={`https://bearsd.com/@${signup.username}`}
                 >
-                  lookup on steemd.com
+                  lookup on bearsd.com
                 </a>
               </small>
             ) : null}

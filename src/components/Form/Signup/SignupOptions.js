@@ -84,7 +84,7 @@ const SignupOptions = ({
             >
                 <a
                     className="external-link"
-                    href="https://blocktrades.us/create-steem-account"
+                    href="https://blocktrades.us/create-bears-account"
                     onClick={() => {
                         logCheckpoint(
                             CHECKPOINTS.paid_signup_clicked_blocktrades
@@ -102,37 +102,37 @@ const SignupOptions = ({
 
                 <a
                     className="external-link"
-                    href="https://anon.steem.network/"
+                    href="https://anon.bears.network/"
                     onClick={() => {
                         logCheckpoint(
-                            CHECKPOINTS.paid_signup_clicked_anonsteem
+                            CHECKPOINTS.paid_signup_clicked_anonbears
                         );
                     }}
                 >
                     <Button type="primary" ghost htmlType="button">
-                        AnonSteem
+                        AnonBears
                         <Icon type="link" />
                     </Button>
                 </a>
                 <p>
-                    <FormattedMessage id="signup_options_anonsteem" />
+                    <FormattedMessage id="signup_options_anonbears" />
                 </p>
                 <a
                     className="external-link"
-                    href="https://steemit.com/news/@timcliff/new-tool-from-busy-org-create-new-steem-blockchain-accounts-with-steemconnect"
+                    href="https://bearshares.com/news/@timcliff/new-tool-from-busy-org-create-new-bears-blockchain-accounts-with-bearsconnect"
                     onClick={() => {
                         logCheckpoint(
-                            CHECKPOINTS.paid_signup_clicked_steemconnect
+                            CHECKPOINTS.paid_signup_clicked_bearsconnect
                         );
                     }}
                 >
                     <Button type="primary" ghost htmlType="button">
-                        SteemConnect
+                        BearsConnect
                         <Icon type="link" />
                     </Button>
                 </a>
                 <p>
-                    <FormattedMessage id="signup_options_steemconnect" />
+                    <FormattedMessage id="signup_options_bearsconnect" />
                 </p>
                 <hr />
                 <p className="modal-disclaimer">
@@ -153,7 +153,7 @@ SignupOptions.propTypes = {
 };
 
 SignupOptions.defaultProps = {
-    referrer: 'steemit',
+    referrer: 'bearshares',
 };
 
 export default SignupOptions;

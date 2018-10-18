@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
-import steem from '@steemit/steem-js';
+import bears from '@bearshares/bears-js';
 import { Button, Form, Icon, Popover } from 'antd';
 import { CHECKPOINTS } from '../../constants';
 import LanguageItem from './LanguageItem';
@@ -154,7 +154,7 @@ class CreateAccount extends Component {
         } = this.props;
         const { username, password, email } = this.state;
 
-        const publicKeys = steem.auth.generateKeys(username, password, [
+        const publicKeys = bears.auth.generateKeys(username, password, [
             'owner',
             'active',
             'posting',
@@ -233,7 +233,7 @@ class CreateAccount extends Component {
                     <div className="Signup__form">
                         <div className="Signup__header">
                             <object
-                                data="img/logo-steem.svg"
+                                data="img/logo-bears.svg"
                                 type="image/svg+xml"
                                 id="logo"
                                 aria-label="logo"
@@ -361,7 +361,7 @@ class CreateAccount extends Component {
                                     onSubmit={this.handleSubmit}
                                     password={password}
                                     requireAgreements={
-                                        this.state.query.ref === 'steemit' ||
+                                        this.state.query.ref === 'bearshares' ||
                                         this.state.query.ref === undefined
                                     }
                                     goBack={this.goBack}
@@ -375,7 +375,7 @@ class CreateAccount extends Component {
                                     <FormattedMessage id="welcome" /> {username}
                                 </h1>
                                 <p>
-                                    <FormattedMessage id="enjoy_steem" />
+                                    <FormattedMessage id="enjoy_bears" />
                                 </p>
                                 {!this.isWhistle() && (
                                     <Form.Item>

@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-const { api } = require('@steemit/steem-js');
+const { api } = require('@bearshares/bears-js');
 
 const generateTrackingId = () =>
     `x-${Math.random()

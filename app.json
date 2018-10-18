@@ -45,7 +45,7 @@
     "CREATE_USER_URL": {
       "required": true
     },
-    "STEEMJS_URL": {
+    "BEARSJS_URL": {
       "required": true
     },
     "LOG_FORMAT": "short",
